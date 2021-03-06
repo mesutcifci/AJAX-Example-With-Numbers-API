@@ -367,14 +367,16 @@ template {
 
 :root {
     /* COLOR */
-    --dark-1: #0a0a0f;
-    --dark-2: #1d1d2b;
-    --white: #ffffff;
-    --bg-gradient: linear-gradient(80deg, #a00634, #c3073f, #c50955);
+    --blue: rgb(28, 0, 128);
+    --dark-1: rgb(10, 10, 15);
+    --dark-2: rgb(29, 29, 42);
+    --white: rgb(255, 255, 255);
+    --bg-gradient: linear-gradient(80deg,rgb(162, 6, 53), rgb(195, 7, 63), rgb(197, 9, 85));
     /* FONT */
     --font-bubble: 'Bubblegum Sans', cursive;
     /* OTHER */
     --border-radius-1: 0.5rem;
+    --padding-1: 0.5rem;
 }
 
 /* BASE */
@@ -382,6 +384,10 @@ template {
 *, *::before, *::after {
     margin: 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 li {
@@ -418,8 +424,9 @@ main {
     margin-left: auto;
     margin-right: auto;
     padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     height: initial;
-    width: 90%;
 }
 
 .main-heading {
@@ -427,6 +434,7 @@ main {
     color: #c3073f;
     font-size: 4rem;
     margin-bottom: 4rem;
+    text-align: center;
 }
 
 /* INPUT AND DROPDOWN */
@@ -453,68 +461,148 @@ main {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: var(--white);
+    cursor: pointer;
     font-family: 'Bubblegum Sans', cursive;
     font-size: 1.6rem;
     min-height: 4.5rem;
+    min-width: 7rem;
     width: 9rem;
     padding-top: 1.3rem;
     position: relative;
 }
 
 .dropdown--arrow {
-    cursor: pointer;
     position: absolute;
     top: 2rem;
     right: 1rem;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
     width: 1.5rem;
     height: auto;
-    -webkit-transition: -webkit-transform 1s;
-    transition: -webkit-transform 1s;
-    transition: transform 1s;
-    transition: transform 1s, -webkit-transform 1s;
 }
 
 .dropdown--arrow-path {
     fill: #ffff;
 }
 
-.dropdown--item {
+.selected-item-text {
+    margin-bottom: 0.5rem;
+    padding-left: var(--padding-1);
+}
+
+.dropdown--item-container {
+    background-image: inherit;
+    position: absolute;
+    top: 4rem;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.5s, visibility 0.5s;
+    transition: opacity 0.5s, visibility 0.5s;
     width: 100%;
-    border-bottom: 1px solid;
+}
+
+.dropdown--item {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     cursor: pointer;
-    display: none;
+    padding-top: var(--padding-1);
+    padding-bottom: var(--padding-1);
+    padding-left: var(--padding-1);
+    width: 100%;
 }
 
-.first-item {
-    display: initial;
+.dropdown--item:nth-last-child(1) {
+    border-bottom-left-radius: var(--border-radius-1);
+    border-bottom-right-radius: var(--border-radius-1);
 }
 
+.dropdown--item:hover {
+    background-color: var(--blue);
+}
 
 /* FACTS */
 
 .showcase {
     background-image: var(--bg-gradient);
+    background-size: 300% 300%;
     border-radius: 1rem;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: var(--white);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-width: 43rem;
+    min-height: 8rem;
+    width: 43rem;
     padding: 1rem;
     text-align: center;
-    max-width: 42.5rem;
 }
 
+.facts {
+    line-height: 2.4rem;
+}
+
+/* FOOTER */
+
+.attribution {
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+}
+
+.attribution--text {
+    color: var(--white);
+}
+
+.attribution--link {
+    color: rgb(195, 7, 63);
+    font-weight: 700;
+}
+
+/* Media Queries */
+
+@media(max-width:450px) {
+    .main-heading {
+        font-size: calc(1rem + 4vw);
+    }
+    .input-and-dropdown {
+        width: 100%;
+    }
+    .input {
+        width: 73%;
+    }
+    .showcase {
+        width: 95vw;
+    }
+}
 
 /* JS CLASS*/
 
 .js-arrow {
-   -webkit-transform: rotate(180deg);
-   transform: rotate(180deg); 
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
-.selected {
-  display: block;  
+.js-selected {
+    background-color: var(--blue);
 }
 
-.js-item {
-  display: block;  
+.js-visible {
+    opacity: 1;
+    visibility: visible;
 }
