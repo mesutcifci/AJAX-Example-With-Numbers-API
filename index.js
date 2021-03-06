@@ -75,7 +75,7 @@ function getData() {
     /* get data with fetch */
 
     if (number != "") {
-        fetch('https://numbersapi.com/' + number + "/" + factType)
+        fetch('http://numbersapi.com/' + number + "/" + factType)
             .then(response => response.text())
             .then(data => factArea.textContent = data)
             .catch(err => console.log(err));
