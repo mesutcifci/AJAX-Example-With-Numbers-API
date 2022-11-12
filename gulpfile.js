@@ -10,17 +10,19 @@ gulp.task("browser-sync", function () {
   });
 
   gulp.watch("./*.html").on("change", reload);
-  gulp.watch("./css/style.css", gulp.series("prefix"));
+  gulp.watch("./style.css", gulp.series("prefix"));
 });
 
 gulp.task("prefix", () => {
   return gulp
-    .src("./css/style.css")
+    .src("./style.css")
     .pipe(autoprefixer({ cascade: false }))
-    .pipe(gulp.dest("./css/build/"))
+    .pipe(gulp.dest("./build/style.css"))
     .pipe(browserSync.stream());
 });
 
 gulp.task("default", () => {
-  gulp.watch("./css/style.css", gulp.series("browser-sync", "prefix"));
+  gulp.watch("./style.css", gulp.series("prefix"));
 });
+
+gulp.task("build", gulp.parallel("prefix"));

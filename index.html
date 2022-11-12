@@ -1,64 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./build/style.css" />
 
-    <link rel="stylesheet" href="./css/build/style.css">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap"
+      rel="stylesheet"
+    />
 
     <title>NUMBERS API</title>
 
     <script src="./index.js" defer></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <main>
+      <h1 class="main-heading">The Facts About Numbers.</h1>
 
-        <h1 class="main-heading">The Facts About Numbers.</h1>
+      <div class="input-and-dropdown">
+        <input
+          type="text"
+          class="input"
+          type="text"
+          placeholder="Type a number"
+        />
 
-        <div class="input-and-dropdown">
+        <ul class="dropdown">
+          <svg
+            class="dropdown--arrow"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 122.88 66.91"
+            style="enable-background: new 0 0 122.88 66.91"
+            xml:space="preserve"
+          >
+            <g>
+              <path
+                class="dropdown--arrow-path"
+                d="M11.68,1.95C8.95-0.7,4.6-0.64,1.95,2.08c-2.65,2.72-2.59,7.08,0.13,9.73l54.79,53.13l4.8-4.93l-4.8,4.95 c2.74,2.65,7.1,2.58,9.75-0.15c0.08-0.08,0.15-0.16,0.22-0.24l53.95-52.76c2.73-2.65,2.79-7.01,0.14-9.73 c-2.65-2.72-7.01-2.79-9.73-0.13L61.65,50.41L11.68,1.95L11.68,1.95z"
+              />
+            </g>
+          </svg>
+          <li class="selected-item-text">Trivia</li>
+          <div class="dropdown--item-container">
+            <li class="dropdown--item js-selected">Trivia</li>
+            <li class="dropdown--item">Year</li>
+            <li class="dropdown--item">Date</li>
+            <li class="dropdown--item">Math</li>
+          </div>
+        </ul>
+      </div>
 
-            <input type="text" class="input" type="text" placeholder="Type a number">
-
-            <ul class="dropdown">
-
-                <svg class="dropdown--arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 66.91"
-                    style="enable-background:new 0 0 122.88 66.91" xml:space="preserve">
-                    <g>
-                        <path class="dropdown--arrow-path"
-                            d="M11.68,1.95C8.95-0.7,4.6-0.64,1.95,2.08c-2.65,2.72-2.59,7.08,0.13,9.73l54.79,53.13l4.8-4.93l-4.8,4.95 c2.74,2.65,7.1,2.58,9.75-0.15c0.08-0.08,0.15-0.16,0.22-0.24l53.95-52.76c2.73-2.65,2.79-7.01,0.14-9.73 c-2.65-2.72-7.01-2.79-9.73-0.13L61.65,50.41L11.68,1.95L11.68,1.95z" />
-                    </g>
-                </svg>
-                <li class="selected-item-text">Trivia</li>
-                <div class="dropdown--item-container">
-                    <li class="dropdown--item js-selected">Trivia</li>
-                    <li class="dropdown--item">Year</li>
-                    <li class="dropdown--item">Date</li>
-                    <li class="dropdown--item">Math</li>
-                </div>
-            </ul>
-
-        </div>
-
-        <div class="showcase">
-            <p class="facts">
-                Everybody lie but numbers don't lie
-            </p>
-        </div>
-
+      <div class="showcase">
+        <p class="facts">Everybody lie but numbers don't lie</p>
+      </div>
     </main>
+  </body>
 
-</body>
-
-<footer class="attribution">
-    <p class="attribution--text">Created By <a class="attribution--link" href="https://github.com/mesutcifci">Mesut Çifci</a></p>
-</footer>
-
+  <footer class="attribution">
+    <p class="attribution--text">
+      Created By
+      <a class="attribution--link" href="https://github.com/mesutcifci"
+        >Mesut Çifci</a
+      >
+    </p>
+  </footer>
 </html>
