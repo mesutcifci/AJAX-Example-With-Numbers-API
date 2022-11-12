@@ -71,7 +71,6 @@ function getData() {
   let inputValue = input.value.trim();
   const isInputValid = checkInputIsValid(inputValue);
   inputValue = Number(inputValue);
-  console.log(inputValue, isInputValid);
 
   /* get data with XMLHttpRequest
     if(inputValue != "") {
