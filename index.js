@@ -6,61 +6,77 @@ let selectedItemText = document.querySelector(".selected-item-text");
 let input = document.querySelector(".input");
 let factArea = document.querySelector(".facts");
 
-let factType = 'trivia';
+let factType = "trivia";
 
 function makeDropdownClickable() {
-    dropdown.addEventListener("click", (event) => {
-        rotateArrow();
-        showDropdownItemContainer();
-        clearInputValue(event.target);
-        selectDropdownItem(event.target);
-    });
+  dropdown.addEventListener("click", (event) => {
+    rotateArrow();
+    showDropdownItemContainer();
+    clearInputValue(event.target);
+    selectDropdownItem(event.target);
+  });
 }
 
 function rotateArrow() {
-    dropdownArrow.classList.toggle("js-arrow");
+  dropdownArrow.classList.toggle("js-arrow");
 }
 
 function showDropdownItemContainer() {
-    dropdownItemContainer.classList.toggle("js-visible");
+  dropdownItemContainer.classList.toggle("js-visible");
 }
 
 function selectDropdownItem(element) {
-
-    if (element.classList.contains("dropdown--item")) {
-        selectedItemText.textContent = element.textContent;
-        factType = selectedItemText.textContent.toLowerCase();
-        makeSelected(element);
-    }
-
+  if (element.classList.contains("dropdown--item")) {
+    selectedItemText.textContent = element.textContent;
+    factType = selectedItemText.textContent.toLowerCase();
+    makeSelected(element);
+  }
 }
 
 function makeSelected(element) {
-    let selectedItem = document.querySelector(".js-selected");
-    if (selectedItem != element) {
-        selectedItem.classList.remove("js-selected");
-        element.classList.add("js-selected");
-    }
-
+  let selectedItem = document.querySelector(".js-selected");
+  if (selectedItem != element) {
+    selectedItem.classList.remove("js-selected");
+    element.classList.add("js-selected");
+  }
 }
 
 function clearInputValue(element) {
-    if (element.classList.contains("dropdown--item") && (element.textContent != selectedItemText.textContent)) 
-    {
-        input.value = "";
-    }
-   
+  if (
+    element.classList.contains("dropdown--item") &&
+    element.textContent != selectedItemText.textContent
+  ) {
+    input.value = "";
+  }
 }
 
+function checkInputIsValid(inputValue) {
+  const isEmptyString = inputValue.length <= 0;
+  let isNumber = true;
 
+  if (isEmptyString) {
+    return false;
+  } else {
+    isNumber = !isNaN(Number(inputValue));
+  }
+
+  if (!isNumber) {
+    return false;
+  }
+
+  return true;
+}
 
 function getData() {
-    let number = input.value;
+  let inputValue = input.value.trim();
+  const isInputValid = checkInputIsValid(inputValue);
+  inputValue = Number(inputValue);
+  console.log(inputValue, isInputValid);
 
-    /* get data with XMLHttpRequest
-    if(number != "") {
+  /* get data with XMLHttpRequest
+    if(inputValue != "") {
         let request = new XMLHttpRequest();
-        request.open("GET", 'http://numbersapi.com/' + number + "/" + factType);
+        request.open("GET", 'http://numbersapi.com/' + inputValue + "/" + factType);
 
         request.onload = () => {
             if(request.status == 200) {
@@ -72,18 +88,16 @@ function getData() {
     }
     */
 
-    /* get data with fetch */
+  /* get data with fetch */
 
-    if (number != "") {
-        fetch('http://numbersapi.com/' + number + "/" + factType)
-            .then(response => response.text())
-            .then(data => factArea.textContent = data)
-            .catch(err => console.log(err));
-    }
-
+  if (isInputValid) {
+    fetch("http://numbersapi.com/" + inputValue + "/" + factType)
+      .then((response) => response.text())
+      .then((data) => (factArea.textContent = data))
+      .catch((err) => console.log(err));
+  }
 }
-
 
 makeDropdownClickable();
 
-input.addEventListener('input', getData);
+input.addEventListener("input", getData);
